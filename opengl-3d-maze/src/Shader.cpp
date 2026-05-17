@@ -1,5 +1,6 @@
 #include "Shader.h"
 #include <glad/glad.h>
+#include <glm/gtc/type_ptr.hpp>
 #include <iostream>
 
 Shader::Shader(const char* vertexSource, const char* fragSource)
@@ -41,30 +42,32 @@ void Shader::use()
 
 void Shader::setFloat(const std::string& name, float& value) const
 {
+	glUniform1f(glGetUniformLocation(ID, name.c_str()), value);
 }
 
 void Shader::setInt(const std::string& name, int& value) const
 {
-}
-
-void Shader::setVec1D(const std::string& name, glm::vec1& value) const
-{
+	glUniform1i(glGetUniformLocation(ID, name.c_str()), value);
 }
 
 void Shader::setVec2D(const std::string& name, glm::vec2& value) const
 {
+	glUniform2f(glGetUniformLocation(ID, name.c_str()), value.x, value.y);
 }
 
 void Shader::setVec3D(const std::string& name, glm::vec3& value) const
 {
+	glUniform3f(glGetUniformLocation(ID, name.c_str()), value.x, value.y, value.z);
 }
 
 void Shader::setVec4D(const std::string& name, glm::vec4& value) const
 {
+	glUniform4f(glGetUniformLocation(ID, name.c_str()), value.x, value.y, value.z, value.w);
 }
 
 void Shader::setMat4D(const std::string& name, glm::mat4& value) const
 {
+	glUniformMatrix4fv(glGetUniformLocation(ID, name.c_str()), 1, false, glm::value_ptr(value));
 }
 
 void Shader::checkCompilationError(unsigned int shader, std::string type)
