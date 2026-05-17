@@ -61,3 +61,7 @@ void Shader::setVec4D(const std::string& name, glm::vec4& value) const
 void Shader::setMat4D(const std::string& name, glm::mat4& value) const
 {
 }
+
+void Shader::checkCompilationError(unsigned int shader, std::string type)
+{
+}

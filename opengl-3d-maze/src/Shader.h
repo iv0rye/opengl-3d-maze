@@ -21,5 +21,7 @@ public:
 	void setVec4D(const std::string& name, glm::vec4& value) const;
 
 	void setMat4D(const std::string& name, glm::mat4& value) const;
+
+	void checkCompilationError(unsigned int shader, std::string type);
 };
 
