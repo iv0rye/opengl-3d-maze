@@ -1,11 +1,37 @@
 #include "Shader.h"
+#include <glad/glad.h>
 
-Shader::Shader(const char* vertexPath, const char* fragPath)
+Shader::Shader(const char* vertexSource, const char* fragSource)
 {
+	unsigned int vertex;
+	unsigned int fragment;
+	int success;
+	char infoLog[512];
+
+	// generate vertex shader
+	vertex = glCreateShader(GL_VERTEX_SHADER);
+	glShaderSource(vertex, 1, &vertexSource, NULL);
+	glCompileShader(vertex);
+
+	// generate fragment shader
+	fragment = glCreateShader(GL_FRAGMENT_SHADER);
+	glShaderSource(fragment, 1, &fragSource, NULL);
+	glCompileShader(fragment);
+
+	// generate shader
+	ID = glCreateProgram();
+	glAttachShader(ID, vertex);
+	glAttachShader(ID, fragment);
+
+	glLinkProgram(ID);
+
+	glDeleteShader(vertex);
+	glDeleteShader(fragment);
 }
 
 void Shader::use()
 {
+	glUseProgram(ID);
 }
 
 void Shader::setFloat(const std::string& name, float& value) const
