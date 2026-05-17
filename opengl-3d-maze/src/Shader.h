@@ -22,6 +22,7 @@ public:
 
 	void setMat4D(const std::string& name, glm::mat4& value) const;
 
+private:
 	void checkCompilationError(unsigned int shader, std::string type);
 };
 
