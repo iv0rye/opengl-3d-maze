@@ -1,7 +1,6 @@
 #include "Texture.h"
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
-#include 
 
 Texture::Texture(unsigned char* imageData, int width, int height)
 {
@@ -17,11 +16,16 @@ Texture::Texture(unsigned char* imageData, int width, int height)
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
 	// generate texture and mipmaps
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_INT, imageData);
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, imageData);
 	glGenerateMipmap(GL_TEXTURE_2D);
 }	
 
-unsigned int Texture::getTextureId()
+unsigned int Texture::GetTextureId() const
 {
 	return textureId;
+}
+
+void Texture::Bind() const
+{
+	glBindTexture(GL_TEXTURE_2D, textureId);
 }
