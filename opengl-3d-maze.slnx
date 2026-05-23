@@ -3,5 +3,5 @@
     <Platform Name="x64" />
     <Platform Name="x86" />
   </Configurations>
-  <Project Path="opengl-3d-maze/opengl-3d-maze.vcxproj" />
+  <Project Path="opengl-3d-maze/opengl-3d-maze.vcxproj" Id="8eea134f-3f1a-4892-9a61-6f65945782c4" />
 </Solution>
