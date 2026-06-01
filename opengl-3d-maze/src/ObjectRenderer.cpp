@@ -2,9 +2,9 @@
 #include "Shader.h"
 #include <glad/glad.h>
 
-ObjectRenderer::ObjectRenderer(Shader& shader)
+ObjectRenderer::ObjectRenderer(Shader& shader) : shader(shader)
 {
-    this->shader = shader;
+    initRenderData();
 }
 
 ObjectRenderer::~ObjectRenderer()
