@@ -3,7 +3,7 @@
 #include <glad/glad.h>
 #include <glm/ext/matrix_transform.hpp>
 
-ObjectRenderer::ObjectRenderer(Shader& shader) : shader(shader)
+ObjectRenderer::ObjectRenderer(Shader shader) : shader(shader)
 {
     initRenderData();
 }
@@ -45,6 +45,42 @@ void ObjectRenderer::DrawObject(Texture& texture, glm::vec3 position, glm::vec3 
     glBindVertexArray(VAO);
     glDrawArrays(GL_TRIANGLES, 0, 36);
     glBindVertexArray(0);
+}
+
+void ObjectRenderer::DrawObject(glm::vec3 position, glm::vec3 size, glm::vec3 rotate, glm::vec3 colour)
+{
+    this->shader.Use();
+
+    glm::mat4 model = glm::mat4(1.0f);
+
+    // final translation
+    model = glm::translate(model, position);
+
+    // rotation
+    model = glm::translate(model, glm::vec3(0.5f * size.x, 0.5f * size.y, 0.5f * size.z));
+
+    // TODO: make it a quartenion to avoid gimbal lock pls!!!
+    model = glm::rotate(model, rotate.x, glm::vec3(1, 0, 0));
+    model = glm::rotate(model, rotate.y, glm::vec3(0, 1, 0));
+    model = glm::rotate(model, rotate.z, glm::vec3(0, 0, 1));
+
+    model = glm::translate(model, glm::vec3(-0.5f * size.x, -0.5f * size.y, -0.5f * size.z));
+
+    // scale
+    model = glm::scale(model, size);
+
+    // set uniforms, draw object
+    this->shader.SetMat4D("model", model);
+    this->shader.SetVec3D("objectColour", colour);
+
+    glBindVertexArray(VAO);
+    glDrawArrays(GL_TRIANGLES, 0, 36);
+    glBindVertexArray(0);
+}
+
+unsigned int ObjectRenderer::GetShaderId() const
+{
+    return this->shader.ID;
 }
 
 void ObjectRenderer::initRenderData()

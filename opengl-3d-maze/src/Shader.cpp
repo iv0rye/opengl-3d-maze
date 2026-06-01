@@ -21,7 +21,7 @@ Shader::Shader(const char* vertexSource, const char* fragSource)
 	fragment = glCreateShader(GL_FRAGMENT_SHADER);
 	glShaderSource(fragment, 1, &fragSource, NULL);
 	glCompileShader(fragment);
-	CheckCompilationError(vertex, "FRAGMENT");
+	CheckCompilationError(fragment, "FRAGMENT");
 
 	// generate shader
 	ID = glCreateProgram();
@@ -29,7 +29,7 @@ Shader::Shader(const char* vertexSource, const char* fragSource)
 	glAttachShader(ID, fragment);
 
 	glLinkProgram(ID);
-	CheckCompilationError(vertex, "PROGRAM");
+	CheckCompilationError(ID, "PROGRAM");
 
 	glDeleteShader(vertex);
 	glDeleteShader(fragment);

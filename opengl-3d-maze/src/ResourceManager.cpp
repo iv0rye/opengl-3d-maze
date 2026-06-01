@@ -7,7 +7,7 @@
 std::map<std::string, Shader> ResourceManager::Shaders;  
 std::map<std::string, Texture> ResourceManager::Textures;
 
-Shader ResourceManager::SetShader(const char* vShaderFile, const char* fShaderFile, std::string shaderName)
+Shader& ResourceManager::SetShader(const char* vShaderFile, const char* fShaderFile, std::string shaderName)
 {
     // read file
     std::string vertexCode;
@@ -49,7 +49,7 @@ Shader ResourceManager::SetShader(const char* vShaderFile, const char* fShaderFi
     return Shaders[shaderName];
 }
 
-Texture ResourceManager::SetTexture(const char* textureFile, std::string textureName)
+Texture& ResourceManager::SetTexture(const char* textureFile, std::string textureName)
 {
     stbi_set_flip_vertically_on_load(true);
 
@@ -69,12 +69,12 @@ Texture ResourceManager::SetTexture(const char* textureFile, std::string texture
     return Textures[textureName];
 }
 
-Shader ResourceManager::GetShader(std::string shaderName)
+Shader& ResourceManager::GetShader(std::string shaderName)
 {
     return Shaders[shaderName];
 }
 
-Texture ResourceManager::GetTexture(std::string textureName)
+Texture& ResourceManager::GetTexture(std::string textureName)
 {
     return Textures[textureName];
 }
