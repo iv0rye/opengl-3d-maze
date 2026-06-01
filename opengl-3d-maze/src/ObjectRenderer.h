@@ -1,5 +1,5 @@
 #pragma once
-#include "src/Shader.h"
+#include "Shader.h"
 class ObjectRenderer
 {
 public:
@@ -8,7 +8,7 @@ public:
 
 private:
 	Shader shader;
-	unsigned int quadVAO;
+	unsigned int VAO;
 
 	void initRenderData();
 };
