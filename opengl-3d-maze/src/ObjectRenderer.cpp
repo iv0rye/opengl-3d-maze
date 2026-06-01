@@ -13,6 +13,7 @@ ObjectRenderer::~ObjectRenderer()
 
 void ObjectRenderer::DrawObject(Texture& texture, glm::vec3 position, glm::vec3 size, glm::vec3 rotate, glm::vec3 colour)
 {
+    this->shader.Use();
 }
 
 void ObjectRenderer::initRenderData()
