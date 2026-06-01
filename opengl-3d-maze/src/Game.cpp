@@ -2,10 +2,14 @@
 
 Game::Game(unsigned int width, unsigned int height)
 {
+	this->State = GAME_ACTIVE;
+	this->Width = width;
+	this->Height = height;
 }
 
 Game::~Game()
 {
+	delete Renderer;
 }
 
 void Game::Init()

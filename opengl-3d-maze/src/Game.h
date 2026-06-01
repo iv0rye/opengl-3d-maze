@@ -2,6 +2,7 @@
 
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
+#include "ObjectRenderer.h"
 
 enum GameState
 {
@@ -29,5 +30,8 @@ public:
 	void ProcessInput(float dt);
 	void Update(float dt);
 	void Render();
+
+private:
+	ObjectRenderer* Renderer;
 };
 
