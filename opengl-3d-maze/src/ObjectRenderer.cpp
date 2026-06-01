@@ -9,6 +9,7 @@ ObjectRenderer::ObjectRenderer(Shader& shader) : shader(shader)
 
 ObjectRenderer::~ObjectRenderer()
 {
+    glDeleteVertexArrays(1, &this->VAO);
 }
 
 void ObjectRenderer::DrawObject(Texture& texture, glm::vec3 position, glm::vec3 size, glm::vec3 rotate, glm::vec3 colour)
