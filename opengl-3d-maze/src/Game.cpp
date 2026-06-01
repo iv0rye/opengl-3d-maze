@@ -27,7 +27,7 @@ void Game::Init()
 
 	glm::mat4 projection = glm::perspective(fov, (float)Width / (float)Height, 0.1f, 100.0f);
 
-	glm::mat4 view = glm::translate(glm::mat4(1.f), glm::vec3(0.f, 0.f, -10.f));
+	glm::mat4 view = glm::mat4(1.f);
 
 	shader.Use();
 	shader.SetInt("image", 0);
@@ -54,9 +54,17 @@ void Game::Render()
 
 	Renderer->DrawObject(
 		texture,
-		glm::vec3(0.f, 0.f, 0.f),
+		glm::vec3(0.f, 0.f, -2.f),
 		glm::vec3(1.f, 1.f, 1.f),
 		glm::vec3(0.5f, 0.5f, 0.5f),
+		glm::vec3(1.f)
+	);
+
+	Renderer->DrawObject(
+		texture,
+		glm::vec3(2.f, 2.f, 0.f),
+		glm::vec3(1.f, 3.f, 1.f),
+		glm::vec3(0.2f, 0.8f, 0.5f),
 		glm::vec3(1.f)
 	);
 }
