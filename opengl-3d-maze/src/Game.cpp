@@ -1,4 +1,6 @@
 #include "Game.h"
+#include "ResourceManager.h"
+#include <glm/ext/matrix_clip_space.hpp>
 
 Game::Game(unsigned int width, unsigned int height)
 {
@@ -14,6 +16,20 @@ Game::~Game()
 
 void Game::Init()
 {
+	Shader shader = ResourceManager::SetShader("../assets/shaders/shader.vs", "../assets/shaders/shader.fs", "object");
+
+	// shader config
+	float fov = glm::radians(45.0f);
+
+	glm::mat4 projection = glm::perspective(fov, (float)Width / (float)Height, 0.1f, 100.0f);
+	glm::mat4 view = glm::mat4(0.0f);
+
+	shader.Use();
+	shader.SetInt("image", 0);
+	shader.SetMat4D("projection", projection);
+	shader.SetMat4D("view", view);
+
+	Renderer = new ObjectRenderer(shader);
 }
 
 void Game::ProcessInput(float dt)
