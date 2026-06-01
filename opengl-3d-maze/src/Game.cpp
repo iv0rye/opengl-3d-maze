@@ -16,7 +16,7 @@ Game::~Game()
 
 void Game::Init()
 {
-	Shader shader = ResourceManager::SetShader("assets/shaders/shader.vs", "assets/shaders/shader.fs", "object");
+	Shader shader = ResourceManager::SetShader(VERTEX_SHADER_PATH.c_str(), FRAGMENT_SHADER_PATH.c_str(), "object");
 
 	// shader config
 	float fov = glm::radians(45.0f);

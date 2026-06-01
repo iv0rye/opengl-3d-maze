@@ -33,5 +33,8 @@ public:
 
 private:
 	ObjectRenderer* Renderer;
+	
+	const std::string VERTEX_SHADER_PATH = "assets/shaders/shader.vs";
+	const std::string FRAGMENT_SHADER_PATH = "assets/shaders/shader.fs";
 };
 
