@@ -10,6 +10,10 @@ ObjectRenderer::~ObjectRenderer()
 {
 }
 
+void ObjectRenderer::DrawObject(Texture& texture, glm::vec3 position, glm::vec3 size, glm::vec3 rotate, glm::vec3 colour)
+{
+}
+
 void ObjectRenderer::initRenderData()
 {
     float vertices[] = 
@@ -77,6 +81,7 @@ void ObjectRenderer::initRenderData()
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)0);
     glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float)));
 
+    // bind to none
     glBindVertexArray(0);
     glBindBuffer(GL_ARRAY_BUFFER, 0);
 }
