@@ -7,6 +7,7 @@ class Shader
 public:
 	unsigned int ID;
 
+	Shader() {};
 	Shader(const char* vertexSource, const char* fragSource);
 
 	void Use();

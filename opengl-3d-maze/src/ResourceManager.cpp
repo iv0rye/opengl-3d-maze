@@ -4,7 +4,8 @@
 #include <sstream>
 #include <iostream>
 
-ResourceManager::ResourceManager() {}
+std::map<std::string, Shader> ResourceManager::Shaders;  
+std::map<std::string, Texture> ResourceManager::Textures;
 
 Shader ResourceManager::SetShader(const char* vShaderFile, const char* fShaderFile, std::string shaderName)
 {

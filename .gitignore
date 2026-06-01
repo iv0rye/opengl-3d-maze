@@ -1,6 +1,19 @@
 # Prerequisites
 *.d
 
+x64/
+Debug/
+Release/
+.vs/
+*.user
+*.suo
+*.idb
+*.pdb
+*.ilk
+*.exp
+*.lib
+*.tlog
+
 # Compiled Object files
 *.slo
 *.lo

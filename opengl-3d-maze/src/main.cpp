@@ -2,9 +2,12 @@
 #include <GLFW/glfw3.h>
 
 #include <iostream>
+#include "Game.h"
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void processInput(GLFWwindow* window);
+const int WIDTH = 800;
+const int HEIGHT = 600;
 
 int main() 
 {
@@ -14,7 +17,7 @@ int main()
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-	GLFWwindow* window = glfwCreateWindow(800, 600, "OpenGL Game", NULL, NULL);
+	GLFWwindow* window = glfwCreateWindow(WIDTH, HEIGHT, "OpenGL Game", NULL, NULL);
 
 	// window error check
 	if (window == NULL)
@@ -40,6 +43,10 @@ int main()
 	
 	// enable depth testing
 	glEnable(GL_DEPTH_TEST);
+	
+	Game game = Game(WIDTH, HEIGHT);
+
+	game.Init();
 
 	// game loop
 	while (!glfwWindowShouldClose(window))

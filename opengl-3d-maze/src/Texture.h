@@ -2,6 +2,7 @@
 class Texture
 {
 public:
+	Texture() {};
 	Texture(unsigned char* imageData, int width, int height);
 
 	unsigned int GetTextureId() const;
