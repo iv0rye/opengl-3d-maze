@@ -12,8 +12,8 @@ public:
 	void Use();
 
 	// setters
-	void SetFloat(const std::string& name, float& value) const;
-	void SetInt(const std::string& name, int& value) const;
+	void SetFloat(const std::string& name, float value) const;
+	void SetInt(const std::string& name, int value) const;
 
 	void SetVec2D(const std::string& name, glm::vec2& value) const;
 	void SetVec3D(const std::string& name, glm::vec3& value) const;
