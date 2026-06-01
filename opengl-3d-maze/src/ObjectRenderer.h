@@ -7,16 +7,16 @@ public:
 	ObjectRenderer(Shader& shader);
 	~ObjectRenderer();
 
-	void DrawSprite(
+	void DrawObject(
 		Texture& texture,
 		glm::vec3 position,
 		glm::vec3 size = glm::vec3(10.0f),
 		glm::vec3 rotate = glm::vec3(0.0f),
-		glm::vec3 colour = glm::vec3(1.0f),
+		glm::vec3 colour = glm::vec3(1.0f)
 	);
 
 private:
-	Shader shader;
+	Shader& shader;
 	unsigned int VAO;
 
 	void initRenderData();
