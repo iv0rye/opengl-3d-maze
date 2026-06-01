@@ -4,6 +4,7 @@
 
 ObjectRenderer::ObjectRenderer(Shader& shader)
 {
+    this->shader = shader;
 }
 
 ObjectRenderer::~ObjectRenderer()
@@ -21,16 +22,16 @@ void ObjectRenderer::initRenderData()
         // pos coords          // tex coords
         // Back face
         -0.5f, -0.5f, -0.5f,   0.0f, 0.0f,
-            0.5f, -0.5f, -0.5f,   1.0f, 0.0f,
-            0.5f,  0.5f, -0.5f,   1.0f, 1.0f,
-            0.5f,  0.5f, -0.5f,   1.0f, 1.0f,
+        0.5f, -0.5f, -0.5f,   1.0f, 0.0f,
+        0.5f,  0.5f, -0.5f,   1.0f, 1.0f,
+        0.5f,  0.5f, -0.5f,   1.0f, 1.0f,
         -0.5f,  0.5f, -0.5f,   0.0f, 1.0f,
         -0.5f, -0.5f, -0.5f,   0.0f, 0.0f,
         // Front face
         -0.5f, -0.5f,  0.5f,   0.0f, 0.0f,
-            0.5f, -0.5f,  0.5f,   1.0f, 0.0f,
-            0.5f,  0.5f,  0.5f,   1.0f, 1.0f,
-            0.5f,  0.5f,  0.5f,   1.0f, 1.0f,
+        0.5f, -0.5f,  0.5f,   1.0f, 0.0f,
+        0.5f,  0.5f,  0.5f,   1.0f, 1.0f,
+        0.5f,  0.5f,  0.5f,   1.0f, 1.0f,
         -0.5f,  0.5f,  0.5f,   0.0f, 1.0f,
         -0.5f, -0.5f,  0.5f,   0.0f, 0.0f,
         // Left face
