@@ -55,7 +55,8 @@ Texture& ResourceManager::SetTexture(const char* textureFile, std::string textur
 
     // create texture data
     int width, height, nrChannels;
-    unsigned char* textureData = stbi_load(textureFile, &width, &height, &nrChannels, 0);
+    // TODO: handling for rgb channels rather than forcing RGBA
+    unsigned char* textureData = stbi_load(textureFile, &width, &height, &nrChannels, 4);
     
     // error handling for if stbi doesnt load texture file
     if (!textureData)

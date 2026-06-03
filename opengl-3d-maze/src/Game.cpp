@@ -21,6 +21,7 @@ void Game::Init()
 	Shader shader = ResourceManager::SetShader(VERTEX_SHADER_PATH.c_str(), FRAGMENT_SHADER_PATH.c_str(), "object");
 
 	ResourceManager::SetTexture("assets/textures/Concrete.png", "concrete");
+	ResourceManager::SetTexture("assets/textures/Floor.png", "floor");
 
 	// shader config
 	float fov = glm::radians(45.0f);
@@ -47,22 +48,20 @@ void Game::Update(float dt)
 
 void Game::Render()
 {
-	Texture texture = ResourceManager::GetTexture("concrete");
-
 	//std::cout << "Shader ID: " << Renderer->GetShaderId() << std::endl;
 	//std::cout << "Texture ID: " << texture.GetTextureId() << std::endl;
 
 	// Map Floor
 	Renderer->DrawObject(
-		texture,
-		glm::vec3(0.f, -5.f, 0.f),
+		ResourceManager::GetTexture("floor"),
+		glm::vec3(0.f, -2.f, 0.f),
 		glm::vec3(100.f, 1.f, 100.f),
 		glm::vec3(0.f, 0.f, 0.f),
 		glm::vec3(1.f)
 	);
 
 	Renderer->DrawObject(
-		texture,
+		ResourceManager::GetTexture("concrete"),
 		glm::vec3(2.f, 2.f, 0.f),
 		glm::vec3(1.f, 3.f, 1.f),
 		glm::vec3(0.2f, 0.8f, 0.5f),
