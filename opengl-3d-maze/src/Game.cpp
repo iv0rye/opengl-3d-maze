@@ -49,14 +49,15 @@ void Game::Render()
 {
 	Texture texture = ResourceManager::GetTexture("concrete");
 
-	std::cout << "Shader ID: " << Renderer->GetShaderId() << std::endl;
-	std::cout << "Texture ID: " << texture.GetTextureId() << std::endl;
+	//std::cout << "Shader ID: " << Renderer->GetShaderId() << std::endl;
+	//std::cout << "Texture ID: " << texture.GetTextureId() << std::endl;
 
+	// Map Floor
 	Renderer->DrawObject(
 		texture,
-		glm::vec3(0.f, 0.f, -2.f),
-		glm::vec3(1.f, 1.f, 1.f),
-		glm::vec3(0.5f, 0.5f, 0.5f),
+		glm::vec3(0.f, -3.f, 0.f),
+		glm::vec3(100.f, 1.f, 100.f),
+		glm::vec3(0.f, 0.f, 0.f),
 		glm::vec3(1.f)
 	);
 
