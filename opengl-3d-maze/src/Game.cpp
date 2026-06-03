@@ -1,5 +1,6 @@
 #include "Game.h"
 #include "ResourceManager.h"
+#include "MazeObject.h"
 #include <glm/ext/matrix_clip_space.hpp>
 #include <glm/ext/matrix_transform.hpp>
 #include <iostream>
@@ -36,6 +37,9 @@ void Game::Init()
 	shader.SetMat4D("view", view);
 
 	Renderer = new ObjectRenderer(shader);
+
+	// testing maze wall
+	MazeWall = MazeObject(5.f, 5.f, ResourceManager::GetTexture("concrete"));
 }
 
 void Game::ProcessInput(float dt)
@@ -66,6 +70,14 @@ void Game::Render()
 		glm::vec3(1.f, 3.f, 1.f),
 		glm::vec3(0.2f, 0.8f, 0.5f),
 		glm::vec3(1.f)
+	);
+
+	Renderer->DrawObject(
+		MazeWall.ObjectTexture,
+		MazeWall.Position,
+		MazeWall.Size,
+		MazeWall.Rotation,
+		MazeWall.Colour
 	);
 }
 

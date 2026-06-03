@@ -3,6 +3,7 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include "ObjectRenderer.h"
+#include "MazeObject.h"
 
 enum GameState
 {
@@ -33,6 +34,7 @@ public:
 
 	// testing purpose
 	void SetViewMatrix(glm::mat4 view);
+	MazeObject MazeWall;
 
 private:
 	ObjectRenderer* Renderer;
