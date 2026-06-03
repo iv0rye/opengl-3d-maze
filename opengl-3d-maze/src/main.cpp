@@ -7,8 +7,8 @@
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 // TEMP!!!!!! I will be implenting window AND camera in its own classes. this is for testing purposes
-const int WIDTH = 800;
-const int HEIGHT = 600;
+const int WIDTH = 1920;
+const int HEIGHT = 1080;
 
 Game game = Game(WIDTH, HEIGHT);
 
@@ -50,7 +50,7 @@ int main()
 	}
 
 	// set viewport and callback for window resizing
-	glViewport(0, 0, 800, 600);
+	glViewport(0, 0, WIDTH, HEIGHT);
 	glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
 	
 	// enable depth testing

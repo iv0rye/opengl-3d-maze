@@ -35,6 +35,7 @@ void Game::Init()
 	shader.SetInt("image", 0);
 	shader.SetMat4D("projection", projection);
 	shader.SetMat4D("view", view);
+	shader.SetFloat("texMultiplier", 1.0f);
 
 	Renderer = new ObjectRenderer(shader);
 
@@ -55,6 +56,8 @@ void Game::Render()
 	//std::cout << "Shader ID: " << Renderer->GetShaderId() << std::endl;
 	//std::cout << "Texture ID: " << texture.GetTextureId() << std::endl;
 
+	ResourceManager::GetShader("object").SetFloat("texMultiplier", 20.0f);
+
 	// Map Floor
 	Renderer->DrawObject(
 		ResourceManager::GetTexture("floor"),
@@ -64,7 +67,9 @@ void Game::Render()
 		glm::vec3(1.f)
 	);
 
+	ResourceManager::GetShader("object").SetFloat("texMultiplier", 5.0f);
 	MazeWall.Draw(*Renderer);
+	ResourceManager::GetShader("object").SetFloat("texMultiplier", 1.0f);
 }
 
 // camera class testing purposes
