@@ -69,3 +69,11 @@ void Game::Render()
 		glm::vec3(1.f)
 	);
 }
+
+// camera class testing purposes
+void Game::SetViewMatrix(glm::mat4 view)
+{
+	Shader shader = ResourceManager::GetShader("object");
+
+	shader.SetMat4D("view", view);
+}

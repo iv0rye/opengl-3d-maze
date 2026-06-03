@@ -31,6 +31,9 @@ public:
 	void Update(float dt);
 	void Render();
 
+	// testing purpose
+	void SetViewMatrix(glm::mat4 view);
+
 private:
 	ObjectRenderer* Renderer;
 	

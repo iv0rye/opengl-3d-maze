@@ -3,12 +3,23 @@
 
 #include <iostream>
 #include "Game.h"
+#include "Camera.h"
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
-void processInput(GLFWwindow* window);
+// TEMP!!!!!! I will be implenting window AND camera in its own classes. this is for testing purposes
 const int WIDTH = 800;
 const int HEIGHT = 600;
 
+Game game = Game(WIDTH, HEIGHT);
+
+Camera camera = Camera(WIDTH, HEIGHT);
+void processInput(GLFWwindow* window);
+void mouse_callback(GLFWwindow* window, double xpos, double ypos);
+
+// delta time variables
+float deltaTime = 0.0f;
+float lastTime = 0.0f;
+// end temp
 int main() 
 {
 	// initialising glfw and creating window
@@ -28,6 +39,7 @@ int main()
 
 	// making the window's context current
 	glfwMakeContextCurrent(window);
+	glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 
 	// initalising glad to get driver compatibility
 	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
@@ -43,14 +55,21 @@ int main()
 	
 	// enable depth testing
 	glEnable(GL_DEPTH_TEST);
-	
-	Game game = Game(WIDTH, HEIGHT);
 
 	game.Init();
+
+	// TEMP!!!!!! I will be implenting window AND camera in its own classes. this is for testing purposes
+	glfwSetCursorPosCallback(window, mouse_callback);
 
 	// game loop
 	while (!glfwWindowShouldClose(window))
 	{
+		// TEMP!!!!!! I will be implenting window AND camera in its own classes. this is for testing purposes
+		// calculate delta time
+		float currentTime = glfwGetTime();
+		deltaTime = currentTime - lastTime;
+		lastTime = currentTime;
+
 		processInput(window);
 
 		// color buffer
@@ -74,9 +93,17 @@ void framebuffer_size_callback(GLFWwindow* window, int width, int height)
 	glViewport(0, 0, width, height);
 }
 
-
+// below functions temp
 void processInput(GLFWwindow* window)
 {
-	if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
-		glfwSetWindowShouldClose(window, true);
+	camera.ProcessKeyboard(window, deltaTime);
+	
+	game.SetViewMatrix(camera.GetViewMatrix());
+}
+
+void mouse_callback(GLFWwindow* window, double xpos, double ypos)
+{
+	camera.ProcessMouse(window, xpos, ypos);
+
+	game.SetViewMatrix(camera.GetViewMatrix());
 }

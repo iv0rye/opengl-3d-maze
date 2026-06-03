@@ -30,14 +30,14 @@ void Camera::ProcessKeyboard(GLFWwindow* window, float dt)
 
 	// camera movement
 	if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
-		Pos += FrontDir * cameraSpeed;
+		Pos += glm::normalize(glm::vec3(FrontDir.x, 0.0f, FrontDir.z)) * cameraSpeed;
 	if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
-		Pos -= FrontDir * cameraSpeed;
+		Pos -= glm::normalize(glm::vec3(FrontDir.x, 0.0f, FrontDir.z)) * cameraSpeed;
 	if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
 	// We get a right facing vector with cross product (ensure normalised)
-		Pos -= glm::normalize(glm::cross(FrontDir, UpDir)) * cameraSpeed;
+		Pos -= glm::normalize(glm::cross(glm::normalize(glm::vec3(FrontDir.x, 0.0f, FrontDir.z)), UpDir)) * cameraSpeed;
 	if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
-		Pos += glm::normalize(glm::cross(FrontDir, UpDir)) * cameraSpeed;
+		Pos += glm::normalize(glm::cross(glm::normalize(glm::vec3(FrontDir.x, 0.0f, FrontDir.z)), UpDir)) * cameraSpeed;
 }
 
 void Camera::ProcessMouse(GLFWwindow* window, double xpos, double ypos)
