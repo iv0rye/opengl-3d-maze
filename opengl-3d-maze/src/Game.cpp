@@ -55,7 +55,7 @@ void Game::Render()
 	// Map Floor
 	Renderer->DrawObject(
 		texture,
-		glm::vec3(0.f, -3.f, 0.f),
+		glm::vec3(0.f, -5.f, 0.f),
 		glm::vec3(100.f, 1.f, 100.f),
 		glm::vec3(0.f, 0.f, 0.f),
 		glm::vec3(1.f)

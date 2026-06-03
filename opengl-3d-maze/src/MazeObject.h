@@ -3,5 +3,6 @@
 class MazeObject :
     public GameObject
 {
+    
 };
 
