@@ -64,21 +64,7 @@ void Game::Render()
 		glm::vec3(1.f)
 	);
 
-	Renderer->DrawObject(
-		ResourceManager::GetTexture("concrete"),
-		glm::vec3(2.f, 2.f, 0.f),
-		glm::vec3(1.f, 3.f, 1.f),
-		glm::vec3(0.2f, 0.8f, 0.5f),
-		glm::vec3(1.f)
-	);
-
-	Renderer->DrawObject(
-		MazeWall.ObjectTexture,
-		MazeWall.Position,
-		MazeWall.Size,
-		MazeWall.Rotation,
-		MazeWall.Colour
-	);
+	MazeWall.Draw(*Renderer);
 }
 
 // camera class testing purposes

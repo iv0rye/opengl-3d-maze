@@ -1,7 +1,7 @@
 #include "MazeObject.h"
 
-const float MazeObject::MAZE_WALL_HEIGHT = 1.0f;
-const glm::vec3 MazeObject::MAZE_WALL_SIZE = glm::vec3(5.f, 6.f, 5.f);
+const float MazeObject::MAZE_WALL_HEIGHT = 0.0f;
+const glm::vec3 MazeObject::MAZE_WALL_SIZE = glm::vec3(2.f, 4.f, 2.f);
 
 MazeObject::MazeObject(float xPos, float zPos, Texture texture)
 {
