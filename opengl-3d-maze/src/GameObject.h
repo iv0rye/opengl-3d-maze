@@ -3,6 +3,7 @@
 
 class GameObject
 {
+public:
     glm::vec3 Position, Size, Velocity, Colour, Rotation;
 
     bool CanCollide;
