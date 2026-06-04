@@ -132,6 +132,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\MazeLevel.cpp" />
+    <ClCompile Include="src\GameLevel.cpp" />
     <ClCompile Include="src\Camera.cpp" />
     <ClCompile Include="src\MazeObject.cpp" />
     <ClCompile Include="src\GameObject.cpp" />
@@ -146,6 +148,8 @@
     <ClCompile Include="src\Texture.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\MazeLevel.h" />
+    <ClInclude Include="src\GameLevel.h" />
     <ClInclude Include="src\Camera.h" />
     <ClInclude Include="src\MazeObject.h" />
     <ClInclude Include="src\GameObject.h" />
