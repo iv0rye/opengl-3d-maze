@@ -25,7 +25,7 @@ void Game::Init()
 	ResourceManager::SetTexture("assets/textures/Floor.png", "floor");
 
 	// shader config
-	float fov = glm::radians(45.0f);
+	float fov = glm::radians(70.0f);
 
 	glm::mat4 projection = glm::perspective(fov, (float)Width / (float)Height, 0.1f, 100.0f);
 
@@ -41,6 +41,9 @@ void Game::Init()
 
 	// testing maze wall
 	MazeWall = MazeObject(5.f, 5.f, ResourceManager::GetTexture("concrete"));
+
+	AMazeLevel = MazeLevel();
+	AMazeLevel.Load(100.f, 100.f);
 }
 
 void Game::ProcessInput(float dt)
@@ -53,23 +56,7 @@ void Game::Update(float dt)
 
 void Game::Render()
 {
-	//std::cout << "Shader ID: " << Renderer->GetShaderId() << std::endl;
-	//std::cout << "Texture ID: " << texture.GetTextureId() << std::endl;
-
-	ResourceManager::GetShader("object").SetFloat("texMultiplier", 20.0f);
-
-	// Map Floor
-	Renderer->DrawObject(
-		ResourceManager::GetTexture("floor"),
-		glm::vec3(0.f, -2.f, 0.f),
-		glm::vec3(100.f, 1.f, 100.f),
-		glm::vec3(0.f, 0.f, 0.f),
-		glm::vec3(1.f)
-	);
-
-	ResourceManager::GetShader("object").SetFloat("texMultiplier", 5.0f);
-	MazeWall.Draw(*Renderer);
-	ResourceManager::GetShader("object").SetFloat("texMultiplier", 1.0f);
+	AMazeLevel.Draw(*Renderer, "object");
 }
 
 // camera class testing purposes

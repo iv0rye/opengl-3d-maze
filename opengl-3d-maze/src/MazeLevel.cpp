@@ -5,7 +5,8 @@
 
 void MazeLevel::Draw(ObjectRenderer& renderer, std::string shaderName)
 {
-	this->Baseplate.Draw(renderer, ((levelWidth + levelHeight) / 2), shaderName); // width + height / 2 finds avg size to multiply texture
+	this->Baseplate.Draw(renderer, ((LevelWidth + LevelHeight) / 2), shaderName); // width + height / 2 finds avg size to multiply texture
+	this->Roof.Draw(renderer, ((LevelWidth + LevelHeight) / 2), shaderName); // width + height / 2 finds avg size to multiply texture
 
 	for (GameObject mazeWall : LevelObjects)
 	{
@@ -37,17 +38,29 @@ void MazeLevel::init(std::vector<std::vector<unsigned int>> levelData, unsigned 
 		return;
 	}
 
+	this->LevelWidth = levelWidth;
+	this->LevelHeight = levelHeight;
+
 	this->Baseplate = GameObject(
 		ResourceManager::GetTexture("floor"),
 		glm::vec3(0.0f, -2.0f, 0.0f),
 		glm::vec3(levelWidth, 1.0f, levelHeight),
+		glm::vec3(1.0f),
 		glm::vec3(0.0f),
-		glm::vec3(1.0f)
+		glm::vec3(0.0f)
+	);
+	this->Roof = GameObject(
+		ResourceManager::GetTexture("concrete"),
+		glm::vec3(0.0f, 2.0f, 0.0f),
+		glm::vec3(levelWidth, 1.0f, levelHeight),
+		glm::vec3(1.0f),
+		glm::vec3(0.0f),
+		glm::vec3(0.0f)
 	);
 
-	for (unsigned int z = 0; z < levelHeight; z++)
+	for (unsigned int z = 0; z < levelData.size(); z++)
 	{
-		for (unsigned int x = 0; x < levelWidth; x++)
+		for (unsigned int x = 0; x < levelData[0].size(); x++)
 		{
 			// if data at z/x is solid:
 			if (levelData[z][x] == 1)

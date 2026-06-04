@@ -4,6 +4,7 @@
 #include <GLFW/glfw3.h>
 #include "ObjectRenderer.h"
 #include "MazeObject.h"
+#include "MazeLevel.h"
 
 enum GameState
 {
@@ -32,9 +33,10 @@ public:
 	void Update(float dt);
 	void Render();
 
-	// testing purpose
+	// TEMP: testing purpose
 	void SetViewMatrix(glm::mat4 view);
 	MazeObject MazeWall;
+	MazeLevel AMazeLevel;
 
 private:
 	ObjectRenderer* Renderer;

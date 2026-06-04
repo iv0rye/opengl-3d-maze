@@ -5,6 +5,7 @@ class MazeLevel :
 {
 public:
 	GameObject Baseplate;
+	GameObject Roof;
 
 	void Draw(ObjectRenderer& renderer, std::string shaderName);
 
@@ -13,8 +14,7 @@ public:
 protected:
 	virtual void init(std::vector<std::vector<unsigned int>> levelData, unsigned int levelWidth, unsigned int levelHeight) override;
 
-private:
-	unsigned int levelWidth;
-	unsigned int levelHeight;
+	unsigned int LevelWidth;
+	unsigned int LevelHeight;
 };
 
