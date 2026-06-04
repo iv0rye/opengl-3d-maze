@@ -50,14 +50,14 @@ void MazeLevel::init(std::vector<std::vector<unsigned int>> levelData, unsigned 
 		glm::vec3(0.0f)
 	);
 	this->Roof = GameObject(
-		ResourceManager::GetTexture("concrete"),
+		ResourceManager::GetTexture("roof"),
 		glm::vec3(0.0f, 2.0f, 0.0f),
 		glm::vec3(levelWidth, 1.0f, levelHeight),
 		glm::vec3(1.0f),
 		glm::vec3(0.0f),
 		glm::vec3(0.0f)
 	);
-
+	
 	for (unsigned int z = 0; z < levelData.size(); z++)
 	{
 		for (unsigned int x = 0; x < levelData[0].size(); x++)

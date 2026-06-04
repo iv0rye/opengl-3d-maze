@@ -5,15 +5,20 @@
 
 Camera::Camera(int width, int height, float mouseSens, float movementSens)
 {
-	Pos = glm::vec3(0.0f);
-	FrontDir = glm::vec3(0.0f, 0.0f, -1.0f);
+	// TODO: ideally this value should default to 0, but for testing purposes I want the player to spawn in the maze.
+	Pos = glm::vec3(3.0f, 0.0f, 3.0f);
+	FrontDir = glm::vec3(0.0f, 0.0f, 1.0f);
+	Yaw = 90.0f;
+
+	//Pos = glm::vec3(0.0f);
+	//FrontDir = glm::vec3(0.0f, 0.0f, -1.0f);
 	UpDir = glm::vec3(0.0f, 1.0f, 0.0f);
 
 	LastX = width / 2;
 	LastY = height / 2;
 
 	Pitch = 0.0f;
-	Yaw = -90.0f;
+	//Yaw = -90.0f;
 
 	MouseSensitivity = mouseSens;
 	MovementSensitivity = movementSens;

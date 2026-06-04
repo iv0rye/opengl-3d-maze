@@ -23,6 +23,7 @@ void Game::Init()
 
 	ResourceManager::SetTexture("assets/textures/Concrete.png", "concrete");
 	ResourceManager::SetTexture("assets/textures/Floor.png", "floor");
+	ResourceManager::SetTexture("assets/textures/Roof.png", "roof");
 
 	// shader config
 	float fov = glm::radians(70.0f);
