@@ -5,6 +5,19 @@
 
 void MazeLevel::Draw(ObjectRenderer& renderer, std::string shaderName)
 {
+	this->Baseplate.Draw(renderer, ((levelWidth + levelHeight) / 2), shaderName); // width + height / 2 finds avg size to multiply texture
+
+	for (GameObject mazeWall : LevelObjects)
+	{
+		mazeWall.Draw(renderer, 2.f, shaderName);
+	}
+}
+
+void MazeLevel::Load(unsigned int levelWidth, unsigned int levelHeight)
+{
+	// std::vector<std::vector<unsigned int>> levelData = 
+
+	MazeLevel::init(levelData, levelHeight, levelHeight);
 }
 
 void MazeLevel::init(std::vector<std::vector<unsigned int>> levelData, unsigned int levelWidth, unsigned int levelHeight)
@@ -31,10 +44,12 @@ void MazeLevel::init(std::vector<std::vector<unsigned int>> levelData, unsigned 
 			if (levelData[z][x] == 1)
 			{
 				MazeObject mazeWall = MazeObject(
-					x,
-					z,
+					(x * 2) + 1, // multiply coord value by 2 (size of maze wall), then offset by 1 as pos represents center of object
+					(z * 2) + 1,
 					ResourceManager::GetTexture("concrete")
 				);
+
+				LevelObjects.push_back(mazeWall);
 			}
 		}
 	}

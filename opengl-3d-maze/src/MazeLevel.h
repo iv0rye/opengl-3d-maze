@@ -8,7 +8,13 @@ public:
 
 	void Draw(ObjectRenderer& renderer, std::string shaderName);
 
+	virtual void Load(unsigned int levelWidth, unsigned int levelHeight) override;
+
 protected:
-	void init(std::vector<std::vector<unsigned int>> levelData, unsigned int levelWidth, unsigned int levelHeight) override;
+	virtual void init(std::vector<std::vector<unsigned int>> levelData, unsigned int levelWidth, unsigned int levelHeight) override;
+
+private:
+	unsigned int levelWidth;
+	unsigned int levelHeight;
 };
 
