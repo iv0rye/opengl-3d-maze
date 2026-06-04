@@ -15,7 +15,16 @@ void MazeLevel::Draw(ObjectRenderer& renderer, std::string shaderName)
 
 void MazeLevel::Load(unsigned int levelWidth, unsigned int levelHeight)
 {
-	// std::vector<std::vector<unsigned int>> levelData = 
+	std::vector<std::vector<unsigned int>> levelData = 
+	{
+		{1, 1, 1, 1, 1, 1, 1},
+		{1, 0, 1, 0, 0, 0, 1},
+		{1, 0, 1, 1, 1, 0, 1},
+		{1, 0, 1, 0, 0, 0, 1},
+		{1, 0, 0, 0, 1, 0, 1},
+		{1, 1, 0, 1, 0, 0, 1},
+		{1, 1, 1, 1, 1, 1, 1}
+	};
 
 	MazeLevel::init(levelData, levelHeight, levelHeight);
 }
