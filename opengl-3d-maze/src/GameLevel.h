@@ -15,7 +15,7 @@ public:
 	// below function mainly exists to support auto gen levels not needing a file input
 	virtual void Load(unsigned int levelWidth, unsigned int levelHeight);
 
-private:
+protected:
 	// init class that intialises a level, which is abstract.
 	virtual void init(
 		std::vector<std::vector<unsigned int>> levelData,
