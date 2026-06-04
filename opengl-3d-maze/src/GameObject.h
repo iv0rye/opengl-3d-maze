@@ -23,5 +23,7 @@ public:
     );
 
     virtual void Draw(ObjectRenderer& renderer);
+    // TEMP: temporary solution for high definition textures!!!
+    virtual void Draw(ObjectRenderer& renderer, float texMultiplier, std::string shaderName);
 };
 

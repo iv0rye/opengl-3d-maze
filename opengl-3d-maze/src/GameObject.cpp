@@ -1,4 +1,5 @@
 #include "GameObject.h"
+#include "ResourceManager.h"
 
 GameObject::GameObject()
 {
@@ -31,4 +32,11 @@ GameObject::GameObject(Texture texture, glm::vec3 pos, glm::vec3 size, glm::vec3
 void GameObject::Draw(ObjectRenderer& renderer)
 {
 	renderer.DrawObject(ObjectTexture, Position, Size, Rotation, Colour);
+}
+
+void GameObject::Draw(ObjectRenderer& renderer, float texMultiplier, std::string shaderName)
+{
+	ResourceManager::GetShader(shaderName).SetFloat("texMultiplier", texMultiplier);
+	renderer.DrawObject(ObjectTexture, Position, Size, Rotation, Colour);
+	ResourceManager::GetShader(shaderName).SetFloat("texMultiplier", 1.0f);
 }
