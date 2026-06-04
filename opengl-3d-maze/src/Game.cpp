@@ -21,8 +21,8 @@ void Game::Init()
 {
 	Shader shader = ResourceManager::SetShader(VERTEX_SHADER_PATH.c_str(), FRAGMENT_SHADER_PATH.c_str(), "object");
 
-	ResourceManager::SetTexture("assets/textures/Concrete.png", "concrete");
-	ResourceManager::SetTexture("assets/textures/Floor.png", "floor");
+	ResourceManager::SetTexture("assets/textures/Wall2.png", "concrete");
+	ResourceManager::SetTexture("assets/textures/Floor2.png", "floor");
 	ResourceManager::SetTexture("assets/textures/Roof.png", "roof");
 
 	// shader config
