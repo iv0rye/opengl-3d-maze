@@ -12,9 +12,9 @@ public:
 	virtual void Load(unsigned int levelWidth, unsigned int levelHeight) override;
 
 protected:
+	std::vector<std::vector<unsigned int>> GenerateDFSLevelData(unsigned int levelWidth, unsigned int levelHeight) const;
 	virtual void init(std::vector<std::vector<unsigned int>> levelData, unsigned int levelWidth, unsigned int levelHeight) override;
 
 	unsigned int LevelWidth;
 	unsigned int LevelHeight;
 };
-
