@@ -8,7 +8,7 @@ void MazeLevel::Draw(ObjectRenderer& renderer, std::string shaderName)
 	this->Baseplate.Draw(renderer, ((LevelWidth + LevelHeight) / 2), shaderName); // width + height / 2 finds avg size to multiply texture
 	this->Roof.Draw(renderer, ((LevelWidth + LevelHeight) / 2), shaderName); // width + height / 2 finds avg size to multiply texture
 
-	for (GameObject mazeWall : LevelObjects)
+	for (GameObject& mazeWall : LevelObjects)
 	{
 		mazeWall.Draw(renderer, 2.f, shaderName);
 	}
@@ -27,7 +27,9 @@ void MazeLevel::Load(unsigned int levelWidth, unsigned int levelHeight)
 		{1, 1, 1, 1, 1, 1, 1}
 	};
 
-	MazeLevel::init(levelData, levelHeight, levelHeight);
+	LevelObjects.clear();
+
+	MazeLevel::init(levelData, levelWidth, levelHeight);
 }
 
 void MazeLevel::init(std::vector<std::vector<unsigned int>> levelData, unsigned int levelWidth, unsigned int levelHeight)
@@ -41,9 +43,13 @@ void MazeLevel::init(std::vector<std::vector<unsigned int>> levelData, unsigned 
 	this->LevelWidth = levelWidth;
 	this->LevelHeight = levelHeight;
 
+	// walls span 0 -> (cells * 2) on each axis, so centre floor/roof on the maze rather than the origin
+	float mazeCentreX = (float)levelData[0].size();
+	float mazeCentreZ = (float)levelData.size();
+
 	this->Baseplate = GameObject(
 		ResourceManager::GetTexture("floor"),
-		glm::vec3(0.0f, -2.0f, 0.0f),
+		glm::vec3(mazeCentreX, -2.0f, mazeCentreZ),
 		glm::vec3(levelWidth, 1.0f, levelHeight),
 		glm::vec3(1.0f),
 		glm::vec3(0.0f),
@@ -51,7 +57,7 @@ void MazeLevel::init(std::vector<std::vector<unsigned int>> levelData, unsigned 
 	);
 	this->Roof = GameObject(
 		ResourceManager::GetTexture("roof"),
-		glm::vec3(0.0f, 2.0f, 0.0f),
+		glm::vec3(mazeCentreX, 2.0f, mazeCentreZ),
 		glm::vec3(levelWidth, 1.0f, levelHeight),
 		glm::vec3(1.0f),
 		glm::vec3(0.0f),

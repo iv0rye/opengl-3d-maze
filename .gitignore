@@ -82,3 +82,7 @@ Testing/
 .cache/
 
 .vs
+# CMake build output
+build/
+out/
+CMakeUserPresets.json

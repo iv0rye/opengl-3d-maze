@@ -1,5 +1,5 @@
 #include "Camera.h"
-#include "Camera.h"
+#include <algorithm>
 #include <glm/trigonometric.hpp>
 #include <glm/ext/matrix_transform.hpp>
 
@@ -62,9 +62,8 @@ void Camera::ProcessMouse(GLFWwindow* window, double xpos, double ypos)
 	LastY = ypos;
 
 	// multiply offset by a sensitivity value
-	const float sensitivity = 0.1f;
-	xOffset *= sensitivity;
-	yOffset *= sensitivity;
+	xOffset *= MouseSensitivity;
+	yOffset *= MouseSensitivity;
 
 	// add offset to yaw/pitch angles
 	Yaw += xOffset;
